@@ -1,0 +1,1 @@
+move C:\Users\IXBOB\Desktop\SuicidePlugin\build\libs\SuicidePlugin-1.0.0.jar C:\Users\IXBOB\Desktop\java_CloudServer\1.20.4_paper_test\plugins

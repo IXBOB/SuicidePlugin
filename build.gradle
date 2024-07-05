@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'com.ixbob'
-version = '1.0.0'
+version = '1.0.1'
 
 repositories {
     mavenCentral()
@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-compileOnly "io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT"
+    compileOnly "io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT"
 }
 
 def targetJavaVersion = 17
@@ -46,4 +46,9 @@ processResources {
     filesMatching('plugin.yml') {
         expand props
     }
+}
+
+tasks.register('moveOutput', Exec) {
+    workingDir = file('C:\\Users\\IXBOB\\Desktop\\SuicidePlugin')
+    commandLine 'cmd', '/c', 'move_output.bat'
 }
