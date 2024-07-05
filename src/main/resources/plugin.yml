@@ -1,0 +1,4 @@
+name: SuicidePlugin
+version: '${version}'
+main: com.ixbob.suicideplugin.Main
+api-version: '1.20'
