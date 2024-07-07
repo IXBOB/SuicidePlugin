@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class SuicideCommand implements CommandExecutor {
     private FileConfiguration config;
@@ -84,20 +83,17 @@ public class SuicideCommand implements CommandExecutor {
             }
         }
 
+        ArrayList<World> showDeathMsgWorlds = new ArrayList<>();
         for (World world : worlds) {
             boolean isSendDeathMessage = world.getGameRuleValue(GameRule.SHOW_DEATH_MESSAGES);
             if (isSendDeathMessage) {
                 world.setGameRule(GameRule.SHOW_DEATH_MESSAGES, false);
+                showDeathMsgWorlds.add(world);
             }
         }
 
         suicidePlayer.setHealth(0);
 
-        for (World world : worlds) {
-            boolean isSendDeathMessage = world.getGameRuleValue(GameRule.SHOW_DEATH_MESSAGES);
-            if (isSendDeathMessage) {
-                world.setGameRule(GameRule.SHOW_DEATH_MESSAGES, true);
-            }
-        }
+        showDeathMsgWorlds.forEach(world -> world.setGameRule(GameRule.SHOW_DEATH_MESSAGES, true));
     }
 }
